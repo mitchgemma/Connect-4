@@ -20,6 +20,8 @@ Players will alternate taking turns and placing a game piece. Each player will b
 - Create a score tracker. After each game add a tally to the scoreboard for the winning team, if users want to play several games
 - Highlight winning combination on the gameboard
 - Changes to page before, during, and after the game
+- Animate the ship going down the column
+- Play against computer or against someone else
 
 
 ### Technologies:
