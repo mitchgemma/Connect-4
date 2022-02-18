@@ -1,11 +1,11 @@
 # Game-Project
 
-# H1 Connect 4
-## H2 Game Concept
+# Connect 4
+## Game Concept
 Players will alternate taking turns and placing a game piece. Each player will be assigned a color. Game pieces will fall to the bottom of the game board and stack on top of each other. The objective is to get 4 of your own colors in a row, while defending against your opponent so they do not get 4 in a row.
  
  
-### H3 Game Requirements:
+### Game Requirements:
 - Start screen should have instructions and start button - fade into the board
 - User should be able to click a column to place a game piece
 - Turns should alternate between 2 colors
