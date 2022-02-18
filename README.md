@@ -17,8 +17,8 @@ Players will alternate taking turns and placing a game piece. Each player will b
 - Tying combinations should be able to be detected
  
  
-![Start Screen](startScreen.jpg)
+![Start Screen](https://imgur.com/M4plDPd)
  
-![Action](action.jpg)
+![Action](https://imgur.com/OvcTYvr)
  
-![End Screen](ending.jpg)
+![End Screen](https://imgur.com/q7uzpkD)
