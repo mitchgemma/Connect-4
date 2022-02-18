@@ -6,15 +6,26 @@ Players will alternate taking turns and placing a game piece. Each player will b
  
  
 ### Game Requirements:
-- Start screen should have instructions and start button - fade into the board
+- Start screen should have instructions and start button
 - User should be able to click a column to place a game piece
 - Turns should alternate between 2 colors
 - Pieces should stack on top of each other
 - Game should have a reset button
 - Message should be displayed on who’s turn it is
-- Game should detect when there are 4 of the same colors in a row - once a win is detected, highlight the winning combination and create message that says the winner
+- Game should detect when there are 4 of the same colors in a row - once a win is detected, create message that says the winner
 - Once win is detected, game board should be frozen and button should be created to start game over
 - Tying combinations should be able to be detected
+
+### Stretch Goals:
+- Create a score tracker. After each game add a tally to the scoreboard for the winning team, if users want to play several games
+- Highlight winning combination on the gameboard
+- Changes to page before, during, and after the game
+
+
+### Technologies:
+- HTML
+- CSS and Bootstrap
+- Vanilla Javascrtipt
  
  
 ![Start Screen](https://i.imgur.com/M4plDPd.png)
