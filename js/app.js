@@ -9,8 +9,6 @@ let gameBoard = [
 ];
 let player = 1
 let lastMove = "red"
-let currentBlack = "black"
-let currentRed = "red"
 
 
 // create a function that will generate all of the individual game tiles
@@ -21,12 +19,15 @@ const createBoard = () => {
         let gameTile = document.createElement ('div')
         //give tiles a class 
         gameTile.className = "tile"
+        gameTile.style.backgroundColor = "whitesmoke"
         //append these squares to the container
         container.appendChild(gameTile)
         // want to add a way to make tiles clickable
     
-        gameTile.addEventListener('click', click =>{
+        gameTile.addEventListener('click', () =>{
             // alternate which color a tile will turn
+            if (gameTile.style.backgroundColor == "whitesmoke"){
+            //add color on click
             gameTile.style.backgroundColor = lastMove
             //if last color was red, make the next one black
             if (lastMove === "red") {
@@ -36,8 +37,6 @@ const createBoard = () => {
                 lastMove = "red"
             }
             // console.log("tile was clicked")
-            if (gameTile.style.backgroundColor !== "red" || "black"){
-                
             }
         })
     }
