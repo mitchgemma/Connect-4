@@ -1,22 +1,4 @@
 const container = document.getElementById ('container')
-// let gameBoard = [
-//                 "_", "_", "_", "_", "_", "_", "_",
-//                 "_", "_", "_", "_", "_", "_", "_",
-//                 "_", "_", "_", "_", "_", "_", "_",
-//                 "_", "_", "_", "_", "_", "_", "_",
-//                 "_", "_", "_", "_", "_", "_", "_",
-//                 "_", "_", "_", "_", "_", "_", "_",
-// ];
-// const winningCombinations = [
-//     [0, 1, 2, 3],
-//     [1, 2, 3, 4],
-//     [2, 3, 4, 5],
-//     [3, 4, 5, 6],
-//     [7, 8, 9, 10],
-//     [8, 9, 10, 11],
-//     [2, 3, 4, 5],
-//     [3, 4, 5, 6],
-// ]
 const winMessage = document.getElementById('win-message')
 let player = 1
 let lastMove = "red"
@@ -35,16 +17,18 @@ const createBoard = () => {
         //append these squares to the container
         container.appendChild(gameTile)
         
-        gameTile.textContent = " "
         // want to add a way to make tiles clickable
         gameTile.addEventListener('click', () =>{
             placeTile (i)
-            checkWin()
         })
     }
     // create array from all the divs in container
     //this will allow me to fill coloumns from bottom to top
     
+    let gameBoard = Array.from(container.children)
+    console.log ('this is our game board: ', gameBoard)
+    
+    // need function to check for a win condition after every piece is placed
     
     // ========================================================================================================================
     const placeTile = (index) => {
@@ -52,8 +36,7 @@ const createBoard = () => {
         for (let i = 5; i >= 0; i--){ 
             const elementToCheck = gameBoard[7 * i + column];
             // console.log(elementToCheck)
-            console.log(7 * i + column)
-            // check board[7 * i + column] is filled with black/red
+            // console.log(7 * i + column)
             if (elementToCheck.style.backgroundColor === 'red' || elementToCheck.style.backgroundColor === 'black'){
                 // if filled, continue
                 continue
@@ -71,11 +54,10 @@ const createBoard = () => {
                 return
                 // console.log("tile was clicked")
             }
-        }        }
+        }
+        //call function to check for win after tile is placed
+        checkWin()
     }
-    let gameBoard = Array.from(container.children)
-    
-    // need function to check for a win condition after every piece is placed
     
     const checkWin = () => {
         for (let i = 0; i < gameBoard.length; i ++){
@@ -85,11 +67,14 @@ const createBoard = () => {
             const style4 = gameBoard[i + 3].style.backgroundColor
             
             if (style1 === 'red' && style2 === 'red' && style3 === 'red' && style4 === 'red'){
-                winMessage.textContent = 'Red wins!'
+                console.log('winner!')
+            } else if (style1 === 'black' && style2 === 'black' && style3 === 'black' && style4 === 'black'){
+                console.log('winner!')
             }
         }
     }    
-    
+}
+        
     // console.log('this will give us our board array: ', gameBoard)
     
     //once the DOM loads, this will run
