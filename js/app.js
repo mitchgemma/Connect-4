@@ -70,17 +70,6 @@ const createBoard = () => {
   };
 
   const checkWin = () => {
-    // loop to check for tie
-    for (let i = 0; i < gameBoard.length; i++) {
-      //conditions to be met to determine if a tie
-      determineTie = gameBoard[i].style.backgroundColor;
-      if (
-        (determineTie === "red" || determineTie === "black") &&
-        (winMessage.textContent = " ")
-      ) {
-        winMessage.textContent = "It's a tie!";
-      }
-    }
     // check for horizontal wins
     // this is allowing incorrect wins through rows - needs to be fixed
     for (let i = 0; i < gameBoard.length - 3; i++) {
@@ -178,6 +167,18 @@ const createBoard = () => {
         winMessage.textContent = "Black Wins";
         blackWin();
       }
+    }
+    //test for a tie
+    const allTilesPlayed = gameBoard.every((gameBoard) => {
+      return (
+        //this will only return true if all of the tiles are red or black
+        gameBoard.style.backgroundColor === "red" ||
+        gameBoard.style.backgroundColor === "black"
+      );
+    });
+    // if the above function is true, change the message to a tie
+    if (allTilesPlayed === true) {
+      winMessage.textContent = "It's a tie!";
     }
   };
 
