@@ -70,6 +70,17 @@ const createBoard = () => {
   };
 
   const checkWin = () => {
+    // loop to check for tie
+    for (let i = 0; i < gameBoard.length; i++) {
+      //conditions to be met to determine if a tie
+      determineTie = gameBoard[i].style.backgroundColor;
+      if (
+        (determineTie === "red" || determineTie === "black") &&
+        (winMessage.textContent = " ")
+      ) {
+        winMessage.textContent = "It's a tie!";
+      }
+    }
     // check for horizontal wins
     // this is allowing incorrect wins through rows - needs to be fixed
     for (let i = 0; i < gameBoard.length - 3; i++) {
@@ -84,7 +95,6 @@ const createBoard = () => {
         style3 === "red" &&
         style4 === "red"
       ) {
-        winMessage.textContent = "Red wins!";
         redWin();
       } else if (
         style1 === "black" &&
@@ -92,7 +102,6 @@ const createBoard = () => {
         style3 === "black" &&
         style4 === "black"
       ) {
-        winMessage.textContent = "Black Wins";
         blackWin();
       }
     }
@@ -110,7 +119,6 @@ const createBoard = () => {
         style7 === "red" &&
         style8 === "red"
       ) {
-        winMessage.textContent = "Red wins!";
         redWin();
       } else if (
         style5 === "black" &&
@@ -118,7 +126,6 @@ const createBoard = () => {
         style7 === "black" &&
         style8 === "black"
       ) {
-        winMessage.textContent = "Black Wins";
         blackWin();
       }
     }
@@ -136,7 +143,6 @@ const createBoard = () => {
         style11 === "red" &&
         style12 === "red"
       ) {
-        winMessage.textContent = "Red wins!";
         redWin();
       } else if (
         style9 === "black" &&
@@ -144,7 +150,6 @@ const createBoard = () => {
         style11 === "black" &&
         style12 === "black"
       ) {
-        winMessage.textContent = "Black Wins";
         blackWin();
       }
     }
@@ -176,17 +181,21 @@ const createBoard = () => {
     }
   };
 
+  let countRed = 0;
   //need function to run everytime there is a win to add to counter
   const redWin = () => {
-    let count = 0;
-    count += 1;
-    player1Win.textContent = count;
+    winMessage.textContent = "Red wins!";
+    // turnMessage.textContent = " ";
+    countRed += 1;
+    player1Win.textContent = countRed;
   };
 
+  let countBlack = 0;
   const blackWin = () => {
-    let count = 0;
-    count += 1;
-    player2Win.textContent = count;
+    winMessage.textContent = "Black wins!";
+    // turnMessage.textContent = " ";
+    countBlack += 1;
+    player2Win.textContent = countBlack;
   };
 
   const resetBoard = () => {
