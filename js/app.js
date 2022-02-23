@@ -1,6 +1,8 @@
 const container = document.getElementById("container");
 const winMessage = document.getElementById("win-message");
 const reset = document.getElementById("reset");
+let player1Win = document.getElementById("player1-win");
+let player2Win = document.getElementById("player2-win");
 let player = 1;
 let lastMove = "red";
 
@@ -19,14 +21,9 @@ const createBoard = () => {
 
     // want to add a way to make tiles clickable
     gameTile.addEventListener("click", () => {
-      if (winMessage === "Red wins!" || "Black Wins") {
-        return;
-      } else {
-        placeTile(i);
-      }
+      placeTile(i);
     });
   }
-
   // create array from all the divs in container
   //this will allow me to fill coloumns from bottom to top
   let gameBoard = Array.from(container.children);
@@ -38,9 +35,8 @@ const createBoard = () => {
     const column = index % 7;
     for (let i = 5; i >= 0; i--) {
       const elementToCheck = gameBoard[7 * i + column];
-      //   console.log(7 * i + column);
-      // console.log(elementToCheck)
-      // console.log(7 * i + column)
+      console.log(7 * i + column);
+      //   console.log(elementToCheck);
       if (
         elementToCheck.style.backgroundColor === "red" ||
         elementToCheck.style.backgroundColor === "black"
@@ -49,7 +45,6 @@ const createBoard = () => {
         continue;
       } else if (elementToCheck.style.backgroundColor === "whitesmoke") {
         //add color on click
-        // need way to drop pieces to bottom row
         elementToCheck.style.backgroundColor = lastMove;
         //if last color was red, make the next one black
         if (lastMove === "red") {
@@ -63,7 +58,6 @@ const createBoard = () => {
         // console.log("tile was clicked")
       }
     }
-    //call function to check for win after tile is placed
   };
 
   const checkWin = () => {
@@ -82,7 +76,7 @@ const createBoard = () => {
         style4 === "red"
       ) {
         winMessage.textContent = "Red wins!";
-        freezeBoard();
+        redWin();
       } else if (
         style1 === "black" &&
         style2 === "black" &&
@@ -166,10 +160,17 @@ const createBoard = () => {
     }
   };
 
-  const freezeBoard = () => {
-    if (winMessage === "Red wins!" || "Black Wins") {
-      console.log("we gotta freeze it");
-    }
+  //need function to run everytime there is a win to add to counter
+  const redWin = () => {
+    let count = 0;
+    count++;
+    player1Win.textContent = count;
+  };
+
+  const blackWin = () => {
+    let count = 0;
+    count++;
+    player2Win.textContent = count;
   };
 
   const resetBoard = () => {
@@ -188,3 +189,8 @@ const createBoard = () => {
 document.addEventListener("DOMContentLoaded", () => {
   createBoard();
 });
+
+// need to freeze board after there is a win
+//can create a new function and run it every time a win condition is met
+// ||
+// make conditional in the create board function

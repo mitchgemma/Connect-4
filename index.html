@@ -4,10 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="css/style.css" />
     <title>Connect Four</title>
   </head>
   <body>
+    <div class="win-tracker">
+      <h2>Wins</h2>
+      <div class="player-div">
+        <h4>Player 1</h4>
+        <h4>Player 2</h4>
+      </div>
+      <div class="counter-div">
+        <p id="player1-win">0</p>
+        <p id="player2-win">0</p>
+      </div>
+    </div>
     <h1>Connect Four</h1>
     <h2 id="win-message"></h2>
     <div class="reset">
