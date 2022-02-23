@@ -40,7 +40,7 @@ const createBoard = () => {
       //   console.log(elementToCheck);
       if (
         winMessage.textContent === "Red wins!" ||
-        winMessage.textContent === "Black Wins"
+        winMessage.textContent === "Black wins!"
       ) {
         return;
       }
