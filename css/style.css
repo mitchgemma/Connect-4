@@ -43,7 +43,6 @@ h1 {
 }
 
 .win-tracker {
-  display: inline-block;
   float: right;
   bottom: 100%;
   border: 5px solid black;

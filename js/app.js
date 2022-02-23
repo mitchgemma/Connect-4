@@ -3,6 +3,7 @@ const winMessage = document.getElementById("win-message");
 const reset = document.getElementById("reset");
 let player1Win = document.getElementById("player1-win");
 let player2Win = document.getElementById("player2-win");
+let turnMessage = document.getElementById("current-turn");
 let player = 1;
 let lastMove = "red";
 
@@ -38,6 +39,12 @@ const createBoard = () => {
       console.log(7 * i + column);
       //   console.log(elementToCheck);
       if (
+        winMessage.textContent === "Red wins!" ||
+        winMessage.textContent === "Black Wins"
+      ) {
+        return;
+      }
+      if (
         elementToCheck.style.backgroundColor === "red" ||
         elementToCheck.style.backgroundColor === "black"
       ) {
@@ -49,9 +56,11 @@ const createBoard = () => {
         //if last color was red, make the next one black
         if (lastMove === "red") {
           lastMove = "black";
+          turnMessage.textContent = "Player 2, it's your turn.";
           // if last color was black, make the next one red
         } else if (lastMove === "black") {
           lastMove = "red";
+          turnMessage.textContent = "Player 1, it's your turn.";
         }
         checkWin();
         return;
@@ -84,6 +93,7 @@ const createBoard = () => {
         style4 === "black"
       ) {
         winMessage.textContent = "Black Wins";
+        blackWin();
       }
     }
 
@@ -101,6 +111,7 @@ const createBoard = () => {
         style8 === "red"
       ) {
         winMessage.textContent = "Red wins!";
+        redWin();
       } else if (
         style5 === "black" &&
         style6 === "black" &&
@@ -108,6 +119,7 @@ const createBoard = () => {
         style8 === "black"
       ) {
         winMessage.textContent = "Black Wins";
+        blackWin();
       }
     }
 
@@ -125,6 +137,7 @@ const createBoard = () => {
         style12 === "red"
       ) {
         winMessage.textContent = "Red wins!";
+        redWin();
       } else if (
         style9 === "black" &&
         style10 === "black" &&
@@ -132,6 +145,7 @@ const createBoard = () => {
         style12 === "black"
       ) {
         winMessage.textContent = "Black Wins";
+        blackWin();
       }
     }
 
@@ -149,6 +163,7 @@ const createBoard = () => {
         style16 === "red"
       ) {
         winMessage.textContent = "Red wins!";
+        redWin();
       } else if (
         style13 === "black" &&
         style14 === "black" &&
@@ -156,6 +171,7 @@ const createBoard = () => {
         style16 === "black"
       ) {
         winMessage.textContent = "Black Wins";
+        blackWin();
       }
     }
   };
@@ -163,13 +179,13 @@ const createBoard = () => {
   //need function to run everytime there is a win to add to counter
   const redWin = () => {
     let count = 0;
-    count++;
+    count += 1;
     player1Win.textContent = count;
   };
 
   const blackWin = () => {
     let count = 0;
-    count++;
+    count += 1;
     player2Win.textContent = count;
   };
 
