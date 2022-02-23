@@ -1,4 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Quantico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quantico&family=Shizuru&display=swap");
+
+#format {
+  background-color: aliceblue;
+  width: 800px;
+  opacity: 100%;
+  display: block;
+  margin: auto;
+  padding-bottom: 8px;
+  border-radius: 9%;
+}
 
 body {
   background-color: antiquewhite;
@@ -7,14 +18,15 @@ body {
 }
 
 #container {
-  width: 910px;
-  height: 780px;
+  width: 700px;
+  height: 600px;
   background-color: blue;
   margin: auto;
   border: 3px solid black;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  border-radius: 3%;
 }
 
 h1 {
@@ -28,8 +40,8 @@ h1 {
 
 .tile {
   display: inline-block;
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   cursor: pointer;
   /* padding: 10px; */
   border-radius: 50%;
@@ -37,22 +49,28 @@ h1 {
 
 #win-message {
   text-align: center;
+  font-family: "Quantico", sans-serif;
   margin-top: 0;
   margin-bottom: 0px;
 }
 
 .win-tracker {
-  float: right;
-  bottom: 100%;
   border: 5px solid black;
   width: 200px;
   height: 100px;
+  margin-right: 100px;
+  margin-top: 15px;
 }
 
 h2 {
   text-align: center;
+  font-family: "Quantico", sans-serif;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+#current-turn {
+  text-align: center;
 }
 
 h4 {
@@ -64,7 +82,6 @@ h4 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 0ch;
 }
 
 .counter-div {
@@ -72,5 +89,30 @@ h4 {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
-  font-size: 18px;
+  font-size: 24px;
+  padding-top: -20px;
+}
+#player1-win {
+  margin-top: 15px;
+}
+
+#player2-win {
+  margin-top: 15px;
+}
+
+#reset {
+  display: block;
+  margin-left: 100px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 200px;
+  height: 85px;
+  font-family: "Quantico", sans-serif;
+  font-size: 60px;
+  margin-top: 20px;
+  padding-bottom: 50px;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
 }
