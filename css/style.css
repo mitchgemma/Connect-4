@@ -5,7 +5,7 @@
   background-color: aliceblue;
   width: 800px;
   opacity: 100%;
-  display: block;
+  display: none;
   margin: auto;
   padding-bottom: 8px;
   border-radius: 9%;
@@ -21,7 +21,7 @@ body {
 #container {
   width: 630px;
   height: 540px;
-  background-color: blue;
+  background-color: rgb(43, 92, 99);
   margin: auto;
   border: 3px solid black;
   display: flex;
@@ -127,4 +127,42 @@ h4 {
 
 #reset:hover {
   background-color: rgb(43, 92, 99);
+}
+
+#start {
+  display: none;
+  height: 400px;
+  width: 650px;
+  background-color: aliceblue;
+  margin: auto;
+  margin-top: 100px;
+  padding-bottom: 5px;
+  border-radius: 10%;
+}
+
+#start-gameBtn {
+  font-family: "Quantico", sans-serif;
+  height: 80px;
+  width: 300px;
+  font-size: 48px;
+  border: 4px solid black;
+  border-radius: 4%;
+  margin-left: 170px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#start-gameBtn:hover {
+  background-color: rgb(43, 92, 99);
+}
+
+#instructions {
+  font-family: "Quantico", sans-serif;
+  margin-top: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.instructions-title {
+  text-align: center;
 }

@@ -6,6 +6,9 @@ let player2Win = document.getElementById("player2-win");
 let turnMessage = document.getElementById("current-turn");
 let player = 1;
 let lastMove = "red";
+const startButton = document.getElementById("start-gameBtn");
+const popUpDiv = document.getElementById("start");
+const formatGame = document.getElementById("format");
 
 // create a function that will generate all of the individual game tiles
 const createBoard = () => {
@@ -242,7 +245,23 @@ const createBoard = () => {
 };
 // console.log('this will give us our board array: ', gameBoard)
 
+// need display to change for start up screen
+const startWindow = () => {
+  //need to grab the window elements
+  const instructions = document.getElementById("instructions");
+  popUpDiv.style.display = "block";
+  instructions.textContent =
+    "Welcome to connect 4! Players will alternate taking turns in placing a game piece. Each player will be assigned a color. Game pieces will fall to the bottom of the game board and stack on top of each other. The objective is to get 4 of your own colors in a row, while defending against your opponent so they do not get 4 in a row. Player 1 will go first and will be assigned the color red.";
+};
+
+const hideStart = () => {
+  popUpDiv.style.display = "none";
+  formatGame.style.display = "block";
+};
+
 //once the DOM loads, this will run
 document.addEventListener("DOMContentLoaded", () => {
-  createBoard();
+  startWindow();
+  startButton.addEventListener("click", createBoard);
+  startButton.addEventListener("click", hideStart);
 });
