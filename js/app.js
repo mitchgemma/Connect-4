@@ -39,6 +39,7 @@ const createBoard = () => {
     const column = index % 7;
     for (let i = 5; i >= 0; i--) {
       const elementToCheck = gameBoard[7 * i + column];
+      elementToCheck.classList.add("fall");
       // console.log(7 * i + column);
       //   console.log(elementToCheck);
       if (
@@ -71,15 +72,29 @@ const createBoard = () => {
       }
     }
   };
-
+  // counter will increase every time red wins
+  let countRed = 0;
+  let countBlack = 0;
   const checkWin = () => {
+    const blackWin = () => {
+      winMessage.textContent = "Black wins!";
+      // turnMessage.textContent = " ";
+      countBlack += 1;
+      player2Win.textContent = countBlack;
+    };
+    //need function to run everytime there is a win to add to counter
+    const redWin = () => {
+      winMessage.textContent = "Red wins!";
+      countRed += 1;
+      player1Win.textContent = countRed;
+    };
     // check for horizontal wins
     // this is allowing incorrect wins through rows - needs to be fixed
     for (let i = 0; i < gameBoard.length - 3; i++) {
-      const style1 = gameBoard[i].style.backgroundColor;
-      const style2 = gameBoard[i + 1].style.backgroundColor;
-      const style3 = gameBoard[i + 2].style.backgroundColor;
-      const style4 = gameBoard[i + 3].style.backgroundColor;
+      let style1 = gameBoard[i].style.backgroundColor;
+      let style2 = gameBoard[i + 1].style.backgroundColor;
+      let style3 = gameBoard[i + 2].style.backgroundColor;
+      let style4 = gameBoard[i + 3].style.backgroundColor;
       const checkWrapAroundHorizontal = [
         i % 7,
         (i + 1) % 7,
@@ -214,23 +229,6 @@ const createBoard = () => {
     if (allTilesPlayed === true) {
       winMessage.textContent = "It's a tie!";
     }
-  };
-
-  let countRed = 0;
-  //need function to run everytime there is a win to add to counter
-  const redWin = () => {
-    winMessage.textContent = "Red wins!";
-    // turnMessage.textContent = " ";
-    countRed += 1;
-    player1Win.textContent = countRed;
-  };
-
-  let countBlack = 0;
-  const blackWin = () => {
-    winMessage.textContent = "Black wins!";
-    // turnMessage.textContent = " ";
-    countBlack += 1;
-    player2Win.textContent = countBlack;
   };
 
   const resetBoard = () => {

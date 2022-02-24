@@ -45,8 +45,31 @@ h1 {
   width: 90px;
   height: 90px;
   cursor: pointer;
-  /* padding: 10px; */
   border-radius: 50%;
+  animation: drop 0.8s;
+}
+
+.fall {
+  animation-name: fall-animation;
+  animation-duration: 700ms;
+}
+
+@keyframes fall-animation {
+  from {
+    transform: translateY(-500px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes drop {
+  from {
+    margin-top: 100%;
+  }
+  to {
+    margin-top: 0%;
+  }
 }
 
 #win-message {
