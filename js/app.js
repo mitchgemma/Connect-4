@@ -40,6 +40,7 @@ const createBoard = () => {
     for (let i = 5; i >= 0; i--) {
       const elementToCheck = gameBoard[7 * i + column];
       elementToCheck.classList.add("fall");
+
       // console.log(7 * i + column);
       //   console.log(elementToCheck);
       if (
@@ -236,6 +237,7 @@ const createBoard = () => {
     for (let i = 0; i < gameBoard.length; i++) {
       let defaultTile = gameBoard[i];
       defaultTile.style.backgroundColor = "whitesmoke";
+      defaultTile.classList.remove("fall");
     }
     winMessage.textContent = " ";
   };
