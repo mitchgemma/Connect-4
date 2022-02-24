@@ -36,7 +36,7 @@ const createBoard = () => {
     const column = index % 7;
     for (let i = 5; i >= 0; i--) {
       const elementToCheck = gameBoard[7 * i + column];
-      console.log(7 * i + column);
+      // console.log(7 * i + column);
       //   console.log(elementToCheck);
       if (
         winMessage.textContent === "Red wins!" ||
@@ -77,8 +77,19 @@ const createBoard = () => {
       const style2 = gameBoard[i + 1].style.backgroundColor;
       const style3 = gameBoard[i + 2].style.backgroundColor;
       const style4 = gameBoard[i + 3].style.backgroundColor;
+      const checkWrapAroundHorizontal = [
+        i % 7,
+        (i + 1) % 7,
+        (i + 2) % 7,
+        (i + 3) % 7,
+      ];
 
       if (
+        checkWrapAroundHorizontal.includes(0) &&
+        checkWrapAroundHorizontal.includes(6)
+      ) {
+        continue;
+      } else if (
         style1 === "red" &&
         style2 === "red" &&
         style3 === "red" &&
@@ -125,8 +136,18 @@ const createBoard = () => {
       const style10 = gameBoard[i + 8].style.backgroundColor;
       const style11 = gameBoard[i + 16].style.backgroundColor;
       const style12 = gameBoard[i + 24].style.backgroundColor;
-
+      const checkWrapAroundDescending = [
+        i % 7,
+        (i + 8) % 7,
+        (i + 16) % 7,
+        (i + 24) % 7,
+      ];
       if (
+        checkWrapAroundDescending.includes(0) &&
+        checkWrapAroundDescending.includes(6)
+      ) {
+        continue;
+      } else if (
         style9 === "red" &&
         style10 === "red" &&
         style11 === "red" &&
@@ -149,8 +170,18 @@ const createBoard = () => {
       const style14 = gameBoard[i + 6].style.backgroundColor;
       const style15 = gameBoard[i + 12].style.backgroundColor;
       const style16 = gameBoard[i + 18].style.backgroundColor;
-
+      const checkWrapAroundAscending = [
+        i % 7,
+        (i + 6) % 7,
+        (i + 12) % 7,
+        (i + 18) % 7,
+      ];
       if (
+        checkWrapAroundAscending.includes(0) &&
+        checkWrapAroundAscending.includes(6)
+      ) {
+        continue;
+      } else if (
         style13 === "red" &&
         style14 === "red" &&
         style15 === "red" &&
@@ -215,8 +246,3 @@ const createBoard = () => {
 document.addEventListener("DOMContentLoaded", () => {
   createBoard();
 });
-
-// need to freeze board after there is a win
-//can create a new function and run it every time a win condition is met
-// ||
-// make conditional in the create board function
