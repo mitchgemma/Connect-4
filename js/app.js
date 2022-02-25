@@ -17,9 +17,19 @@ const createBoard = () => {
     let column = document.createElement("div");
     column.className = "column";
     container.appendChild(column);
+    // add event listener - when column is hovered the background will change
     column.addEventListener("mouseover", () => {
-      column.style.backgroundColor = "rgb(230, 190, 137)";
+      //conditional for when event listener should highlight or become the original color
+      if (
+        winMessage.textContent === "Red wins!" ||
+        winMessage.textContent === "Black wins!"
+      ) {
+        column.style.backgroundColor = "rgb(43, 92, 99)";
+      } else {
+        column.style.backgroundColor = "rgb(230, 190, 137)";
+      }
     });
+    // add event listener - when column is hovered the background will change back to the original color
     column.addEventListener("mouseout", () => {
       column.style.backgroundColor = "rgb(43, 92, 99)";
     });
@@ -34,6 +44,7 @@ const createBoard = () => {
 
     gameTile.style.backgroundColor = "whitesmoke";
     //append these squares to the container
+    //depending on i, this will assign tiles to their respective column
     if (i % 7 === 0) {
       container.children[0].appendChild(gameTile);
     } else if (i % 7 === 1) {
@@ -55,8 +66,6 @@ const createBoard = () => {
     });
   }
 
-  // create array from all the divs in container
-  //this will allow me to fill coloumns from bottom to top
   //   console.log("this is our game board: ", gameBoard);
 
   // need function to check for a win condition after every piece is placed
