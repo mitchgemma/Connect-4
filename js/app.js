@@ -24,6 +24,7 @@ const createBoard = () => {
         winMessage.textContent === "Red wins!" ||
         winMessage.textContent === "Black wins!"
       ) {
+        turnMessage.style.display = "none";
         column.style.backgroundColor = "rgb(43, 92, 99)";
       } else {
         column.style.backgroundColor = "rgb(230, 190, 137)";
@@ -40,6 +41,7 @@ const createBoard = () => {
     let gameTile = document.createElement("div");
     //give tiles a class
     gameTile.className = "tile";
+
     gameBoard.push(gameTile);
 
     gameTile.style.backgroundColor = "whitesmoke";
@@ -150,6 +152,8 @@ const createBoard = () => {
         style3 === "red" &&
         style4 === "red"
       ) {
+        // this worked
+        gameBoard[i].style.backgroundColor;
         redWin();
       } else if (
         style1 === "black" &&
@@ -276,6 +280,7 @@ const createBoard = () => {
       defaultTile.classList.remove("fall");
     }
     winMessage.textContent = " ";
+    turnMessage.style.display = "block";
   };
   reset.addEventListener("click", resetBoard);
 };
