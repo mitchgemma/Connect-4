@@ -20,7 +20,7 @@ body {
 
 #container {
   width: 630px;
-  height: 540px;
+  height: 561px;
   background-color: rgb(43, 92, 99);
   margin: auto;
   border: 3px solid black;
@@ -38,6 +38,14 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+}
+
+.column {
+  height: 540px;
+  width: 90px;
+  display: inline-block;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .tile {
@@ -189,4 +197,8 @@ h4 {
 
 .instructions-title {
   text-align: center;
+}
+
+.test-class {
+  background-color: aquamarine;
 }

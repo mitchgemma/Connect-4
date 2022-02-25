@@ -10,19 +10,39 @@ const startButton = document.getElementById("start-gameBtn");
 const popUpDiv = document.getElementById("start");
 const formatGame = document.getElementById("format");
 
+let gameBoard = [];
 // create a function that will generate all of the individual game tiles
 const createBoard = () => {
+  for (let i = 0; i < 7; i++) {
+    let column = document.createElement("div");
+    column.className = "column";
+    container.appendChild(column);
+  }
   for (let i = 0; i < 42; i++) {
     // console.log ("make a tile")
     //create a square each time the loop runs
     let gameTile = document.createElement("div");
     //give tiles a class
     gameTile.className = "tile";
+    gameBoard.push(gameTile);
 
     gameTile.style.backgroundColor = "whitesmoke";
     //append these squares to the container
-    container.appendChild(gameTile);
-
+    if (i % 7 === 0) {
+      container.children[0].appendChild(gameTile);
+    } else if (i % 7 === 1) {
+      container.children[1].appendChild(gameTile);
+    } else if (i % 7 === 2) {
+      container.children[2].appendChild(gameTile);
+    } else if (i % 7 === 3) {
+      container.children[3].appendChild(gameTile);
+    } else if (i % 7 === 4) {
+      container.children[4].appendChild(gameTile);
+    } else if (i % 7 === 5) {
+      container.children[5].appendChild(gameTile);
+    } else if (i % 7 === 6) {
+      container.children[6].appendChild(gameTile);
+    }
     // want to add a way to make tiles clickable
     gameTile.addEventListener("click", () => {
       placeTile(i);
@@ -30,7 +50,6 @@ const createBoard = () => {
   }
   // create array from all the divs in container
   //this will allow me to fill coloumns from bottom to top
-  let gameBoard = Array.from(container.children);
   //   console.log("this is our game board: ", gameBoard);
 
   // need function to check for a win condition after every piece is placed
