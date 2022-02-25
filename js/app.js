@@ -17,6 +17,12 @@ const createBoard = () => {
     let column = document.createElement("div");
     column.className = "column";
     container.appendChild(column);
+    column.addEventListener("mouseover", () => {
+      column.style.backgroundColor = "rgb(230, 190, 137)";
+    });
+    column.addEventListener("mouseout", () => {
+      column.style.backgroundColor = "rgb(43, 92, 99)";
+    });
   }
   for (let i = 0; i < 42; i++) {
     // console.log ("make a tile")
@@ -48,6 +54,7 @@ const createBoard = () => {
       placeTile(i);
     });
   }
+
   // create array from all the divs in container
   //this will allow me to fill coloumns from bottom to top
   //   console.log("this is our game board: ", gameBoard);
