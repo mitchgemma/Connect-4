@@ -39,11 +39,11 @@ const createBoard = () => {
     const column = index % 7;
     for (let i = 5; i >= 0; i--) {
       const elementToCheck = gameBoard[7 * i + column];
-      elementToCheck.classList.add("fall");
 
       // console.log(7 * i + column);
       //   console.log(elementToCheck);
       if (
+        // conditional to stop the board from being clicked after a win is determined
         winMessage.textContent === "Red wins!" ||
         winMessage.textContent === "Black wins!"
       ) {
@@ -56,6 +56,7 @@ const createBoard = () => {
         // if filled, continue
         continue;
       } else if (elementToCheck.style.backgroundColor === "whitesmoke") {
+        elementToCheck.classList.add("fall");
         //add color on click
         elementToCheck.style.backgroundColor = lastMove;
         //if last color was red, make the next one black
