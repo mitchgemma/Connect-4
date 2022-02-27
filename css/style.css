@@ -48,11 +48,10 @@ h1 {
   padding-bottom: 0px;
 }
 
-.test-class {
+/* animations that show up after a win. supposed to make the 4 winning chips 'breathe' */
+/* .win-animation {
   animation-name: pulse;
   animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-play-state: paused;
 }
 
 @keyframes pulse {
@@ -65,7 +64,7 @@ h1 {
   100% {
     transform: scale(0.7);
   }
-}
+} */
 
 .tile {
   display: inline-block;
@@ -78,7 +77,7 @@ h1 {
 
 .fall {
   animation-name: fall-animation;
-  animation-duration: 700ms;
+  animation-duration: 1s;
 }
 
 @keyframes fall-animation {

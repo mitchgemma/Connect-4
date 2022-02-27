@@ -24,9 +24,12 @@ const createBoard = () => {
         winMessage.textContent === "Red wins!" ||
         winMessage.textContent === "Black wins!"
       ) {
+        // if win is determined, hide the messaged displaying the turn
         turnMessage.style.display = "none";
+        // change background color back to the normal color
         column.style.backgroundColor = "rgb(43, 92, 99)";
       } else {
+        //if there is no win, turn the column this cover while hovering
         column.style.backgroundColor = "rgb(230, 190, 137)";
       }
     });
@@ -41,7 +44,7 @@ const createBoard = () => {
     let gameTile = document.createElement("div");
     //give tiles a class
     gameTile.className = "tile";
-
+    // add each individual div to the game board array
     gameBoard.push(gameTile);
 
     gameTile.style.backgroundColor = "whitesmoke";
@@ -140,7 +143,6 @@ const createBoard = () => {
         (i + 2) % 7,
         (i + 3) % 7,
       ];
-
       if (
         checkWrapAroundHorizontal.includes(0) &&
         checkWrapAroundHorizontal.includes(6)
@@ -152,8 +154,7 @@ const createBoard = () => {
         style3 === "red" &&
         style4 === "red"
       ) {
-        // this worked
-        gameBoard[i].style.backgroundColor;
+        // this works but not what I am looking to do
         redWin();
       } else if (
         style1 === "black" &&
@@ -259,6 +260,7 @@ const createBoard = () => {
       }
     }
     //test for a tie
+    // if every game tile is red or black return true
     const allTilesPlayed = gameBoard.every((gameBoard) => {
       return (
         //this will only return true if all of the tiles are red or black
@@ -276,10 +278,15 @@ const createBoard = () => {
     // console.log("button clicked");
     for (let i = 0; i < gameBoard.length; i++) {
       let defaultTile = gameBoard[i];
+      // loop through the entire game board and set each tile back to whitesmoke
       defaultTile.style.backgroundColor = "whitesmoke";
+      // reset the fall animation so that it plays every time a tile is clicked
       defaultTile.classList.remove("fall");
     }
+    // erase the win message
     winMessage.textContent = " ";
+    // message displaying the turn is shut off when there is a winner
+    //this will make it show again
     turnMessage.style.display = "block";
   };
   reset.addEventListener("click", resetBoard);
