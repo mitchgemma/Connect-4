@@ -10,10 +10,12 @@ const startButton = document.getElementById("start-gameBtn");
 const popUpDiv = document.getElementById("start");
 const formatGame = document.getElementById("format");
 
+// =================== CREATE GAME BOARD ===========================================================
 let gameBoard = [];
 // create a function that will generate all of the individual game tiles
 const createBoard = () => {
   for (let i = 0; i < 7; i++) {
+    // Create 7 divs - 1 for each column
     let column = document.createElement("div");
     column.className = "column";
     container.appendChild(column);
@@ -38,8 +40,9 @@ const createBoard = () => {
       column.style.backgroundColor = "rgb(43, 92, 99)";
     });
   }
+
+  // ========================= CREATE GAME TILES AND APPEND TO COLUMNS =========================================================
   for (let i = 0; i < 42; i++) {
-    // console.log ("make a tile")
     //create a square each time the loop runs
     let gameTile = document.createElement("div");
     //give tiles a class
@@ -67,21 +70,18 @@ const createBoard = () => {
     }
     // want to add a way to make tiles clickable
     gameTile.addEventListener("click", () => {
+      // Everytime a tile div is clicked, the place tile function will be called
       placeTile(i);
     });
   }
-
-  //   console.log("this is our game board: ", gameBoard);
-
-  // need function to check for a win condition after every piece is placed
-
+  // ========================= FUNCTION FOR DETERMINING WHERE TO PLACE TILE ========================================================
   const placeTile = (index) => {
+    // This will return a number betwee 0 and 6 - representing the column the tile is in
     const column = index % 7;
     for (let i = 5; i >= 0; i--) {
+      // When a tile is clicked it will start at the bottom row. If bottom row is filled, the loop will run again until a game piece is placed
       const elementToCheck = gameBoard[7 * i + column];
 
-      // console.log(7 * i + column);
-      //   console.log(elementToCheck);
       if (
         // conditional to stop the board from being clicked after a win is determined
         winMessage.textContent === "Red wins!" ||
@@ -89,34 +89,42 @@ const createBoard = () => {
       ) {
         return;
       }
+      // If the background color of the bottom most tile is red or black, run through the loop again
       if (
         elementToCheck.style.backgroundColor === "red" ||
         elementToCheck.style.backgroundColor === "black"
       ) {
         // if filled, continue
         continue;
+        // If the bottom most background color is white, this is where the game piece should be placed
       } else if (elementToCheck.style.backgroundColor === "whitesmoke") {
+        // this class adds the animation of the pieces falling once a piece is dropped
         elementToCheck.classList.add("fall");
-        //add color on click
         elementToCheck.style.backgroundColor = lastMove;
         //if last color was red, make the next one black
         if (lastMove === "red") {
           lastMove = "black";
+          // Message displaying who's turn it is
           turnMessage.textContent = "Player 2, it's your turn.";
           // if last color was black, make the next one red
         } else if (lastMove === "black") {
           lastMove = "red";
+          // Message displaying who's turn it is
           turnMessage.textContent = "Player 1, it's your turn.";
         }
         checkWin();
         return;
-        // console.log("tile was clicked")
       }
     }
   };
+
   // counter will increase every time red wins
   let countRed = 0;
+  // counter will increase every time black wins
   let countBlack = 0;
+
+  //=================== CHECK WIN CONDITIONS ============================================================================
+  // need function to check for a win condition after every piece is placed
   const checkWin = () => {
     const blackWin = () => {
       winMessage.textContent = "Black wins!";
@@ -130,19 +138,21 @@ const createBoard = () => {
       countRed += 1;
       player1Win.textContent = countRed;
     };
-    // check for horizontal wins
-    // this is allowing incorrect wins through rows - needs to be fixed
+    // ************************ HORIZONTAL WINS ********************************************************
     for (let i = 0; i < gameBoard.length - 3; i++) {
       let style1 = gameBoard[i].style.backgroundColor;
       let style2 = gameBoard[i + 1].style.backgroundColor;
       let style3 = gameBoard[i + 2].style.backgroundColor;
       let style4 = gameBoard[i + 3].style.backgroundColor;
+
+      // This array will return which columns the pieces are in
       const checkWrapAroundHorizontal = [
         i % 7,
         (i + 1) % 7,
         (i + 2) % 7,
         (i + 3) % 7,
       ];
+      // If the above array contains a 0 or 6, it will not be counted as win
       if (
         checkWrapAroundHorizontal.includes(0) &&
         checkWrapAroundHorizontal.includes(6)
@@ -154,7 +164,6 @@ const createBoard = () => {
         style3 === "red" &&
         style4 === "red"
       ) {
-        // this works but not what I am looking to do
         redWin();
       } else if (
         style1 === "black" &&
@@ -166,7 +175,7 @@ const createBoard = () => {
       }
     }
 
-    // check for vertical wins
+    // ************************** VERTICAL WINS ****************************************************************
     for (let i = 0; i < gameBoard.length - 21; i++) {
       const style5 = gameBoard[i].style.backgroundColor;
       const style6 = gameBoard[i + 7].style.backgroundColor;
@@ -190,7 +199,8 @@ const createBoard = () => {
       }
     }
 
-    // check for descending diagonals
+    // ************************** DESCENDING DIAGONAL WINS ****************************************************************
+
     for (let i = 0; i < gameBoard.length - 24; i++) {
       const style9 = gameBoard[i].style.backgroundColor;
       const style10 = gameBoard[i + 8].style.backgroundColor;
@@ -224,7 +234,7 @@ const createBoard = () => {
       }
     }
 
-    //check for ascending diagonal
+    // ************************** ASCENDING DIAGONAL WINS ****************************************************************
     for (let i = 0; i < gameBoard.length - 18; i++) {
       const style13 = gameBoard[i].style.backgroundColor;
       const style14 = gameBoard[i + 6].style.backgroundColor;
@@ -259,7 +269,6 @@ const createBoard = () => {
         blackWin();
       }
     }
-    //test for a tie
     // if every game tile is red or black return true
     const allTilesPlayed = gameBoard.every((gameBoard) => {
       return (
@@ -273,9 +282,8 @@ const createBoard = () => {
       winMessage.textContent = "It's a tie!";
     }
   };
-
+  // =================================== RESET BOARD ======================================================================
   const resetBoard = () => {
-    // console.log("button clicked");
     for (let i = 0; i < gameBoard.length; i++) {
       let defaultTile = gameBoard[i];
       // loop through the entire game board and set each tile back to whitesmoke
@@ -291,19 +299,23 @@ const createBoard = () => {
   };
   reset.addEventListener("click", resetBoard);
 };
-// console.log('this will give us our board array: ', gameBoard)
 
-// need display to change for start up screen
+// =================================== TRANSITION FROM INSTRUCTION TO GAME BOARD ======================================================================
+
 const startWindow = () => {
-  //need to grab the window elements
+  // grab instuctions - DOM element
   const instructions = document.getElementById("instructions");
+  // change div display so that it will now show up
   popUpDiv.style.display = "block";
+  // check the text content of the instructions
   instructions.textContent =
     "Welcome to connect 4! Players will alternate taking turns in placing a game piece. Each player will be assigned a color. Game pieces will fall to the bottom of the game board and stack on top of each other. The objective is to get 4 of your own colors in a row, while defending against your opponent so they do not get 4 in a row. Player 1 will go first and will be assigned the color red.";
 };
 
 const hideStart = () => {
+  // div style will be changed so that it now disappears
   popUpDiv.style.display = "none";
+  // div will then show up that contains the contents on the main page
   formatGame.style.display = "block";
 };
 
