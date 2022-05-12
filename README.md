@@ -2,7 +2,7 @@
 
 # Connect 4
 
-[Deployed App](https://mitchgemma.github.io/Connect-4/)
+# [Deployed App](https://mitchgemma.github.io/Connect-4/)
 
 ## Game Concept
 
