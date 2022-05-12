@@ -300,7 +300,7 @@ const createBoard = () => {
   reset.addEventListener("click", resetBoard);
 };
 
-// =================================== TRANSITION FROM INSTRUCTION TO GAME BOARD ======================================================================
+// =================================== TRANSITION FROM INSTRUCTION TO GAME BOARD ===========================================
 
 const startWindow = () => {
   // grab instuctions - DOM element
